@@ -3,8 +3,17 @@ import { Fragment, memo } from "react";
 import { useLineChart } from "./line-chart-state-provider";
 
 export function MultiLines() {
-  const { getX, xScale, getY, yScale, grouped, colorScale, bounds } =
-    useLineChart();
+  const {
+    getX,
+    xScale,
+    getY,
+    yScale,
+    getStrokeWidth,
+    strokeWidthScale,
+    grouped,
+    colorScale,
+    bounds,
+  } = useLineChart();
 
   const lineGenerator = line()
     .defined((d) => getY(d) !== null)
@@ -20,6 +29,7 @@ export function MultiLines() {
               key={index}
               path={lineGenerator(observation[1]) as string}
               color={colorScale(observation[0])}
+              width={strokeWidthScale(getStrokeWidth(observation[1][0]))}
             />
           </Fragment>
         );
@@ -30,6 +40,8 @@ export function MultiLines() {
 
 export const Line = memo(
   ({ path, color, width }: { path: string; color: string; width?: number }) => {
-    return <path d={path} stroke={color} fill="none" width={width ?? 1} />;
+    return (
+      <path d={path} stroke={color} fill="none" strokeWidth={width ?? 1} />
+    );
   }
 );
