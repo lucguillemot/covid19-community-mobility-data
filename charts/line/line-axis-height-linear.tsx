@@ -2,16 +2,15 @@ import { axisLeft } from "d3";
 import { select, Selection } from "d3";
 
 import { useEffect, useRef } from "react";
-import { useLineChart } from "../line/line-chart-state-provider";
+import { useLineChart } from "./line-chart-state-provider";
 import { useChartTheme } from "../use-chart-theme";
-import { useFormatNumber } from "../use-format-number";
+import { useFormatPercent } from "../use-format-number";
 
 const TICK_MIN_HEIGHT = 50;
 
-export const AxisHeightLinear = () => {
+export const LineAxisHeightLinear = () => {
   const ref = useRef<SVGGElement>(null);
-  const formatNumber = useFormatNumber();
-
+  const formatNumber = useFormatPercent();
   const { yScale, bounds } = useLineChart();
 
   const ticks = Math.min(bounds.chartHeight / TICK_MIN_HEIGHT, 4);
@@ -43,12 +42,9 @@ export const AxisHeightLinear = () => {
   });
 
   return (
-    <>
-      <g></g>
-      <g
-        ref={ref}
-        transform={`translate(${bounds.margins.left}, ${bounds.margins.top})`}
-      />
-    </>
+    <g
+      ref={ref}
+      transform={`translate(${bounds.margins.left}, ${bounds.margins.top})`}
+    />
   );
 };

@@ -28,7 +28,7 @@ export function MultiLines() {
   );
 }
 
-const Line = memo(
+export const Line = memo(
   ({ path, color, width }: { path: string; color: string; width?: number }) => {
     return <path d={path} stroke={color} fill="none" width={width ?? 1} />;
   }

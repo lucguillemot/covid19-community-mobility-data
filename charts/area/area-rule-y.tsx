@@ -1,8 +1,14 @@
-import { useLineChart } from "./line-chart-state-provider";
+import { useAreaChart } from "./area-chart-state-provider";
 import { useChartTheme } from "../use-chart-theme";
 
-export const RuleY = ({ value, label }: { value: number; label?: string }) => {
-  const { yScale, bounds } = useLineChart();
+export const AreaRuleY = ({
+  value,
+  label,
+}: {
+  value: number;
+  label?: string;
+}) => {
+  const { yScale, bounds } = useAreaChart();
 
   const { domainColor, labelFontSize } = useChartTheme();
 
@@ -20,7 +26,7 @@ export const RuleY = ({ value, label }: { value: number; label?: string }) => {
           <text
             x={0}
             y={yScale(value)}
-            dy={-4}
+            dy={-6}
             fill={domainColor}
             fontSize={labelFontSize}
           >

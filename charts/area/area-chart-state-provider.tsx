@@ -2,36 +2,36 @@ import * as React from "react";
 import { ReactNode } from "react";
 import { Observer } from "../use-width";
 import {
-  LineChartProps,
-  LineChartState,
-  useLineChartState,
-} from "./line-chart-state";
+  AreaChartProps,
+  AreaChartState,
+  useAreaChartState,
+} from "./area-chart-state";
 
 type T = any;
 
 export const ChartContext =
-  React.createContext<LineChartState<T> | undefined>(undefined);
+  React.createContext<AreaChartState<T> | undefined>(undefined);
 
-export const useLineChart = () => {
+export const useAreaChart = () => {
   const ctx = React.useContext(ChartContext);
   if (ctx === undefined) {
     throw Error(
-      "You need to wrap your component in <LineChartProvider /> to useChartState()"
+      "You need to wrap your component in <AreaChartProvider /> to useChartState()"
     );
   }
   return ctx;
 };
 
-export function LineChartProvider<T>({
+export function AreaChartProvider<T>({
   data,
   encoding,
   margins,
   aspectRatio,
   children,
-}: LineChartProps<T> & {
+}: AreaChartProps<T> & {
   children: ReactNode;
 }) {
-  const state = useLineChartState<T>({
+  const state = useAreaChartState<T>({
     data,
     encoding,
     margins,
@@ -42,23 +42,23 @@ export function LineChartProvider<T>({
   );
 }
 
-export const LineChart = ({
+export const AreaChart = ({
   data,
   encoding,
   margins,
   aspectRatio,
   children,
-}: LineChartProps<T> & {
+}: AreaChartProps<T> & {
   children: ReactNode;
 }) => (
   <Observer>
-    <LineChartProvider
+    <AreaChartProvider
       data={data}
       encoding={encoding}
       margins={margins}
       aspectRatio={aspectRatio}
     >
       {children}
-    </LineChartProvider>
+    </AreaChartProvider>
   </Observer>
 );
