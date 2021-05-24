@@ -27,6 +27,19 @@ export const MSAChart = () => {
 
   return (
     <>
+      <CKA.FormLabel sx={{ mt: 4, mb: 1 }} htmlFor="#select-place">
+        Select a type of mobility
+      </CKA.FormLabel>
+      <CKA.RadioGroup id="select-place" onChange={setPlace} value={place}>
+        <CKA.Stack direction="row">
+          {places.map((s) => (
+            <CKA.Radio key={s.value} value={s.value}>
+              {s.label}
+            </CKA.Radio>
+          ))}
+        </CKA.Stack>
+      </CKA.RadioGroup>
+
       <CKA.FormLabel sx={{ mt: 4, mb: 1 }} htmlFor="#select-state">
         Select a state
       </CKA.FormLabel>
@@ -41,20 +54,7 @@ export const MSAChart = () => {
           </option>
         ))}
       </CKA.Select>
-      <CKA.FormLabel sx={{ mt: 4, mb: 1 }} htmlFor="#select-place">
-        Select a type of mobility
-      </CKA.FormLabel>
-      <CKA.Select
-        id="select-place"
-        onChange={(e) => setPlace(e.currentTarget.value)}
-        defaultValue={place}
-      >
-        {places.map((s) => (
-          <option key={s.value} value={s.value}>
-            {s.label}
-          </option>
-        ))}
-      </CKA.Select>
+
       <LineChart
         data={data}
         encoding={{
