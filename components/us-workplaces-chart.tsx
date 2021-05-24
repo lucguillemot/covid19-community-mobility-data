@@ -8,11 +8,11 @@ import {
   AreaChartSvg,
 } from "../charts/area/area-container";
 import { AreaRuleY } from "../charts/area/area-rule-y";
-import { ChartTitle } from "../components/chart-title";
+import { ChartTitle } from "./chart-title";
 // Data
-import us_only_rolling_average from "../public/us_only_rolling_average.json";
+import us_only_rolling_average from "../public/us_only_rolling_average_work.json";
 
-export const USChart = () => {
+export const USWorkplaceChart = () => {
   return (
     <AreaChart
       data={us_only_rolling_average}
@@ -36,7 +36,8 @@ export const USChart = () => {
           <AreaAxisTime />
         </AreaChartSvg>
         <ChartTitle
-          title={
+          title="Mobility Trends for places of work"
+          description={
             <>
               Mobility Trends for places of work in the United States, 7-day
               rolling average of percentage difference to the zero baseline.
