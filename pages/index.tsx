@@ -2,7 +2,8 @@ import * as CKA from "@chakra-ui/react";
 import * as React from "react";
 import { MSAChart } from "../components/msa-chart";
 import { Paragraph } from "../components/paragraph";
-import { USChart } from "../components/us-chart";
+import { USRecreationplaceChart } from "../components/us-recreation-chart";
+import { USWorkplaceChart } from "../components/us-workplaces-chart";
 
 export default function Home() {
   return (
@@ -22,16 +23,19 @@ export default function Home() {
       <Paragraph>
         Nationwide, the level of Americans working from places of work has not
         returned to pre-pandemic level. Google uses{" "}
-        <a href="https://support.google.com/covid19-mobility#topic=9822927">
+        <CKA.Link
+          sx={{ textDecoration: "underline" }}
+          href="https://support.google.com/covid19-mobility#topic=9822927"
+        >
           location data from their users
-        </a>{" "}
+        </CKA.Link>{" "}
         to track difference of frequentation in places of work compared to a
         baseline (zero on the chart below). The baseline is calculated as the
         median frequentation of places of work for each weekday between Jan 3
         and Feb 6, 2020.
       </Paragraph>
 
-      <USChart />
+      <USWorkplaceChart />
 
       <Paragraph>
         During spring 2020, lockdowns and shelter-in-place policies were
@@ -46,6 +50,17 @@ export default function Home() {
         beginning of 2020, which might indicates lasting effects of the pandemic
         on work habits.
       </Paragraph>
+
+      <Paragraph>
+        By contrast, the mobility curve for places like restaurants, cafes,
+        shopping centers, theme parks, museums, libraries, and movie theaters is
+        trending up, especially after February 2021, to reach only 5% below
+        baseline mid-May. This contrast confirms that work mobility is trailing
+        other types of mobility.
+      </Paragraph>
+
+      <USRecreationplaceChart />
+
       <Paragraph>
         This phenomenon is stronger in metropolitan areas than in rural areas.
         In most states, the median value for counties incorporated in
