@@ -18,7 +18,7 @@ export const MSAChart = () => {
   const states = [...new Set(msa.map((d) => d.state))];
   const places = [
     { value: "ravgWork", label: "Places of work" },
-    { value: "ravgRecreation", label: "Retail and recreation" },
+    { value: "ravgRecreation", label: "Places of retail and recreation" },
   ];
 
   const data = msa
@@ -59,7 +59,7 @@ export const MSAChart = () => {
         data={data}
         encoding={{
           x: { dimension: "date" },
-          y: { dimension: place, domain: [-45, 30] },
+          y: { dimension: place, domain: [-55, 30] },
           color: {
             dimension: "countyType",
             domain: [

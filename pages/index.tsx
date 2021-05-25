@@ -7,7 +7,7 @@ import { USWorkplaceChart } from "../components/us-workplaces-chart";
 
 export default function Home() {
   return (
-    <CKA.Box sx={{ maxWidth: "44rem", mx: "auto", px: 8 }}>
+    <CKA.Box sx={{ maxWidth: "44rem", mx: "auto", px: 4 }}>
       <CKA.Heading
         as="h1"
         sx={{ fontWeight: 400, mt: 28, textAlign: "left", fontSize: 42 }}
