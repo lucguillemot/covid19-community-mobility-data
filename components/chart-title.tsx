@@ -15,6 +15,7 @@ export const ChartTitle = ({
         fontSize: 18,
         fontWeight: 500,
         maxWidth: "40em",
+        lineHeight: 1.2,
       }}
     >
       {title}
