@@ -1,6 +1,12 @@
 import * as React from "react";
 import * as CKA from "@chakra-ui/react";
 
+export const ChartFigure = ({ children }: { children: React.ReactNode }) => (
+  <CKA.Box as="figure" sx={{ bg: "muted", p: [4, 10] }}>
+    {children}
+  </CKA.Box>
+);
+
 export const ChartTitle = ({
   title,
   description,
@@ -8,7 +14,7 @@ export const ChartTitle = ({
   title: React.ReactNode;
   description: React.ReactNode;
 }) => (
-  <CKA.Box as="figcaption" sx={{ my: 4 }}>
+  <CKA.Box as="figcaption" sx={{ mt: 4 }}>
     <CKA.Box
       sx={{
         textTransform: "uppercase",

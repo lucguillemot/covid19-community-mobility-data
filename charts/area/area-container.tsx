@@ -5,9 +5,9 @@ export const AreaChartContainer = ({ children }: { children: ReactNode }) => {
   const { bounds } = useAreaChart();
   const { width, height } = bounds;
   return (
-    <figure aria-hidden="true" style={{ position: "relative", width, height }}>
+    <div aria-hidden="true" style={{ position: "relative", width, height }}>
       {children}
-    </figure>
+    </div>
   );
 };
 

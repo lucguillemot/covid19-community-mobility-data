@@ -1,5 +1,5 @@
 import * as CKA from "@chakra-ui/react";
-import { ascending, extent } from "d3";
+import { ascending } from "d3";
 import * as React from "react";
 import { LegendColor } from "../charts/legend/legend-color";
 import { LineAxisHeightLinear } from "../charts/line/line-axis-height-linear";
@@ -8,13 +8,13 @@ import { LineChart } from "../charts/line/line-chart-state-provider";
 import { ChartContainer, ChartSvg } from "../charts/line/line-container";
 import { MultiLines } from "../charts/line/lines";
 import { RuleY } from "../charts/line/rule-y";
-import { ChartTitle } from "./chart-title";
 // Data
 import msa from "../public/msa_states_work_recreation.json";
 
 export const MSAChart = () => {
   const [state, setState] = React.useState("California");
   const [place, setPlace] = React.useState("ravgWork");
+
   const states = [...new Set(msa.map((d) => d.state))];
   const places = [
     { value: "ravgWork", label: "Places of work" },
@@ -27,26 +27,30 @@ export const MSAChart = () => {
 
   return (
     <>
-      <CKA.FormLabel sx={{ mt: 4, mb: 1 }} htmlFor="#select-place">
+      <CKA.FormLabel sx={{ mb: 1, fontWeight: 700 }} htmlFor="#select-place">
         Select a type of mobility
       </CKA.FormLabel>
       <CKA.RadioGroup id="select-place" onChange={setPlace} value={place}>
         <CKA.Stack direction="row">
           {places.map((s) => (
-            <CKA.Radio key={s.value} value={s.value}>
+            <CKA.Radio sx={{ bg: "white" }} key={s.value} value={s.value}>
               {s.label}
             </CKA.Radio>
           ))}
         </CKA.Stack>
       </CKA.RadioGroup>
 
-      <CKA.FormLabel sx={{ mt: 4, mb: 1 }} htmlFor="#select-state">
+      <CKA.FormLabel
+        sx={{ mt: 4, mb: 1, fontWeight: 700 }}
+        htmlFor="#select-state"
+      >
         Select a state
       </CKA.FormLabel>
       <CKA.Select
         id="select-state"
         onChange={(e) => setState(e.currentTarget.value)}
         defaultValue={state}
+        sx={{ bg: "white" }}
       >
         {states.map((s, i) => (
           <option key={i} value={s}>
@@ -80,8 +84,8 @@ export const MSAChart = () => {
           },
         }}
         margins={{
-          top: 60,
-          right: 40,
+          top: 20,
+          right: 0,
           bottom: 40,
           left: 40,
         }}
@@ -94,16 +98,6 @@ export const MSAChart = () => {
             <RuleY value={0} label="Baseline" />
             <MultiLines />
           </ChartSvg>
-          <ChartTitle
-            title=""
-            description={
-              <>
-                Mobility Trends in 2021, by county type. <br />
-                For each county type, the lines represent the median value of
-                the 7-day rolling average percentage difference to the baseline.
-              </>
-            }
-          />
         </ChartContainer>
         <LegendColor symbol="line" />
       </LineChart>

@@ -5,9 +5,9 @@ export const ChartContainer = ({ children }: { children: ReactNode }) => {
   const { bounds } = useLineChart();
   const { width, height } = bounds;
   return (
-    <figure aria-hidden="true" style={{ position: "relative", width, height }}>
+    <div aria-hidden="true" style={{ position: "relative", width, height }}>
       {children}
-    </figure>
+    </div>
   );
 };
 
