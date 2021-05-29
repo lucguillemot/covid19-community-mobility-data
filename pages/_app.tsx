@@ -8,6 +8,7 @@ const colors = {
     800: "#153e75",
     700: "#2a69ac",
   },
+  muted: "#f7f7f7",
 };
 const fonts = {
   body: "system-ui, sans-serif",
